@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: mcp-server-get-temperature
+  ai:
+    mcp:
+      server:
+        name: mcp-server-get-temperature
+server:
+  port: 8081
+

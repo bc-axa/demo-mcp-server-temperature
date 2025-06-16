@@ -1,10 +1,15 @@
 spring:
   application:
     name: mcp-server-get-temperature
+
   ai:
     mcp:
       server:
         name: mcp-server-get-temperature
+
 server:
   port: 8081
 
+logging:
+  level:
+    com.example.demo_mcp_client: debug

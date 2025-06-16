@@ -14,7 +14,7 @@ public class DemoMcpServerApplication {
 	}
 
 	@Bean
-	public ToolCallbackProvider weatherTools(WeatherService weatherService) {
+	public ToolCallbackProvider tools(WeatherService weatherService) {
 		return MethodToolCallbackProvider.builder().toolObjects(weatherService).build();
 	}
 

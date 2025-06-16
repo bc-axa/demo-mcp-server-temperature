@@ -15,6 +15,7 @@ public class WeatherController {
     public String getTemperature(@RequestParam double latitude, @RequestParam double longitude) {
         return weatherService.temperature(latitude, longitude);
     }
+
     @GetMapping("/weather")
     public WeatherResponse getWeather(@RequestParam double latitude, @RequestParam double longitude) {
         return weatherService.getWeather(latitude, longitude);

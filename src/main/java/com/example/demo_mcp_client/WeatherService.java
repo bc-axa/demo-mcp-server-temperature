@@ -3,12 +3,8 @@ package com.example.demo_mcp_client;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.tool.annotation.Tool;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.List;
 
 @Slf4j
 @Service
@@ -22,14 +18,16 @@ public class WeatherService {
 
     @Tool(description = "Get current temperature for a specific latitude/longitude")
     public String temperature(double latitude, double longitude) {
-        log.info("Get current temperature for latitude {} and longitude {}", latitude, longitude);
+        log.debug("Get current temperature for latitude {} and longitude {}", latitude, longitude);
         // input validation
         if (latitude > 90 || latitude < -90 || longitude > 90 || longitude < -90) {
             return "Error: invalid latitude/longitude";
         }
 
         var weatherResponse = getWeather(latitude, longitude);
-        return weatherResponse.getHourly().getTemperature2m().getFirst().toString();
+        var temperature =  weatherResponse.getHourly().getTemperature2m().getFirst().toString();
+        log.debug("Get current temperature for {}", temperature);
+        return temperature;
     }
 
     public WeatherResponse getWeather(Double latitude, Double longitude) {
